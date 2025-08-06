@@ -58,4 +58,11 @@ class User extends Authenticatable
             ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
+    public function igreja() {
+        return $this->belongsTo(Igreja::class);
+    }
+
+    public function ministerios() {
+        return $this->belongsToMany(Ministerio::class)->withPivot('lider');
+    }
 }
